@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n static mezzanine_tags keyword_tags %}
+
+{% block page_title %}{{ page.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block intro %}
+<section class=
+"inner-intro bg-img{{ rand|add:"1234567"|make_list|random }} overlay-light parallax parallax-background2">
+  <div class="container">
+    <div class="row title">
+      <h2 class="h2">{{ page.title }}</h2>
+
+      <div class="page-breadcrumb">
+        <a href="{% url "home" %}">{% trans "Home" %}</a> 
+        {% for page in page_branch %}
+            {% if page.is_current_or_ascendant %}
+                {% if page.is_current %}
+                    / <span>{{ page.title }}</span>
+                {% else %}
+                    / <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<br />
+<br />
+<!-- End Intro Section -->
+{% endblock %}
+
+{% block main %}
+{% endblock %}

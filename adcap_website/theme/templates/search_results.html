@@ -1,0 +1,51 @@
+{% extends "pages/page.html" %}
+
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{% trans "Search Results" %}{% endblock %}
+{% block title %}{% trans "Search Results" %}{% endblock %}
+{% block extra_head %}
+<meta name="robots" content="noindex">
+{% endblock %}
+
+{% block main %}
+
+<section class="ptb ptb-sm-80">
+  <div class="container">
+    <div class="row">
+{% if results.paginator.count == 0 %}
+{% blocktrans %}
+<h4>No results were found in {{ search_type }} matching your query: {{ query }}</h4>
+{% endblocktrans %}
+{% else %}
+{% blocktrans with start=results.start_index end=results.end_index total=results.paginator.count %}
+<h4>Showing {{ start }} to {{ end }} of {{ total }} results in {{ search_type }} matching your query: {{ query }}</h4>
+{% endblocktrans %}
+{% endif %}
+
+<div id="search-results" class="col-lg-12">
+{% for result in results.object_list %}
+{% with result.get_absolute_url as result_url %}
+    <h5>
+        {{ forloop.counter0|add:results.start_index }})
+        {% if result_url %}
+            <a href="{{ result_url }}">{{ result }}</a>
+        {% else %}
+            {{ result }}
+        {% endif %}
+    </h5>
+    {% if result.description != result|stringformat:"s" %}
+        <p>{{ result.description|truncatewords_html:20|safe }}</p>
+    {% endif %}
+    {% if result_url %}
+        <a href="{{ result_url }}">{% trans "read more" %}</a>
+    {% endif %}
+{% endwith %}
+{% endfor %}
+</div>
+
+{% pagination_for results %}
+        </div>
+  </div>
+</section>
+{% endblock %}

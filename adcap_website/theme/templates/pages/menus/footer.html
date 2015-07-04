@@ -1,0 +1,97 @@
+{% load i18n pages_tags staticfiles %}
+
+{% if branch_level > 0 %}
+  {% for page in page_branch %}
+    <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+  {% endfor %}
+{% else %}
+<footer class="footer pt-80">
+  <div class="container">
+    <div class="row mb-60">
+
+      <!-- Logo -->
+      <div class="col-md-3 col-sm-3 col-xs-12 mb-xs-30">
+        <a class="footer-logo" href="home.html">
+        <img src="{% static "img/logo-black.png" %}" /></a>
+      </div>
+      <!-- Logo -->
+
+      <!-- Newsletter -->
+      <div class="col-md-4 col-sm-5 col-xs-12 mb-xs-30 newsletter">
+        <form id="footer-email" class="subscribe-form">
+            <input id="footer-email-input" type="email" class="newsletter-input input-md newsletter-input mb-0" placeholder="Enter Your Email">
+            <label for="footer-email-input"></label>
+            <button class="newsletter-btn btn btn-xs btn-white" type="submit" value=""><i class="fa fa-angle-right mr-0"></i></button>
+        </form>
+      </div>
+      <!-- End Newsletter -->
+
+      <!-- Social -->
+      <div class="col-md-3 col-md-offset-2 col-sm-4 col-xs-12">
+        <ul class="social">
+          <li><a target="_blank" href="https://www.twitter.com/adcap"><i class="fa fa-twitter"></i></a></li>
+          <li><a target="_blank" href="https://instagram.com/adcap"><i class="fa fa-instagram"></i></a></li>
+          <li><a target="_blank" href="https://www.facebook.com/adcap"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank" href="https://www.github.com/adcap"><i class="fa fa-github"></i></a></li>
+        </ul>
+      </div>
+       <!-- End Social -->
+    </div>
+
+    <!--Footer Info -->
+    <div class="row footer-info mb-60">
+      <div class="col-md-3 col-sm-12 col-xs-12 mb-sm-30">
+        <p class="mb-xs-0">{% if settings.SITE_TAGLINE%}{{ settings.SITE_TAGLINE }}{% endif %}</p>
+        <a class="btn-link-a" href="/about">Read More</a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 mb-sm-30 mb-xs-0">
+        <ul class="link">
+        {% if page_branch_in_menu %}
+          {% for page in page_branch %}
+            {% if page.is_primary %}
+              {% if page.in_menu %}
+                <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 mb-sm-30 mb-xs-0">
+        <ul class="link">
+        {% if page_branch_in_menu %}
+          {% for page in page_branch %}
+            {% if page.has_children_in_menu %}
+                {% page_menu page %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-12 col-xs-12">
+        <p>Images and likenesses are used as distorted imitations in exercise of fair use for parody.</p>
+        <p>Not an accredited investment or lending institution.</p>
+        <ul class="link-small">
+          <li><a href="mailto:pitches@adcap.biz"><i class="fa fa-envelope-o
+                  left"></i>pitches@adcap.biz</a></li>
+          <li><a><i class="fa fa-phone left"></i>+1 (718) 395-6385</a></li>
+        </ul>
+      </div>
+   </div>
+    <!-- End Footer Info -->
+  </div>
+
+  <!-- Copyright Bar -->
+  <section class="copyright ptb-60">
+      <div class="container">
+          <p class="">This work is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by/3.0/us/">Creative
+              Commons Attribution 3.0 United States License</a>.<p>
+          <p><a href="/"><b>Adventure Capitalists</b></a> - Lovingly crafted in Brooklyn, New York
+          </p>
+      </div>
+  </section>
+  <!-- End Copyright Bar -->
+
+</footer>
+{% endif %}
