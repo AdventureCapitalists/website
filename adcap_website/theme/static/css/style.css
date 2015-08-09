@@ -572,7 +572,6 @@ textarea {
 }
 
 label {
-    color: #323232;
     font-size: 13px;
     margin-bottom: 10px;
     padding-right: 3px;
@@ -1138,19 +1137,19 @@ form label.error {
     }
 
 .background--dark .header, .background--dark .header a,
-.background--dark .header .side-menu-btn ul li a.right-icon, .background--dark .header .mobile-menu-icon {
+.background--dark .header .side-menu-btn ul li a.right-icon, .background--dark .header .mobile-menu-icon .color-aware .newsletter label {
     color: #fff;
 }
 
 .background--light .header, .background--light .header a, .full-intro .header.sticky a, .header a, .header.sticky a,
 .mobile-menu-icon, .header.sticky .mobile-menu-icon,
 .header .side-menu-btn ul li a.right-icon,
-.header.sticky .side-menu-btn ul li a.right-icon, .header .mobile-menu-icon, .header.sticky .mobile-menu-icon {
+.header.sticky .side-menu-btn ul li a.right-icon, .header .mobile-menu-icon, .header.sticky .mobile-menu-icon .color-aware .newsletter label {
     color: #323232;
 }
     /*#menu-button.menu-opened .bar-icon,*/
     .header .side-menu-btn ul li a.right-icon:hover, .header.sticky .side-menu-btn ul li a.right-icon:hover, .header .mobile-menu-icon:hover,
-    .background--dark .header .navigation a:hover {
+    .background--dark .header .navigation a:hover .color-aware .newsletter label {
         color: #e6ae49;
     }
 
