@@ -3425,6 +3425,14 @@ ul.project-detail-block, .project-detail-block ul {
     line-height: 51px;
 }
 
+@media (max-width: 480px) {
+    .fullscreen-carousel .flex-direction-nav a {
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+    }
+}
+
     .fullscreen-carousel .flex-direction-nav a:hover {
         color: #e6ae49;
     }

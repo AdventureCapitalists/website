@@ -11,8 +11,8 @@ exec = require('child_process').exec;
 /* Watch Files For Changes */
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch('**/static/js/*.js').on('change', livereload.changed);
-  gulp.watch('**/static/css/*.css').on('change', livereload.changed);
+  gulp.watch('**/js/**').on('change', livereload.changed);
+  gulp.watch('**/css/**').on('change', livereload.changed);
   gulp.watch('**/templates/**').on('change', livereload.changed);
 
 });
