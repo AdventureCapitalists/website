@@ -168,10 +168,19 @@
     $(document).ready(function() {                                                            
       $('.subscribe-form').each(function() {
         $(this).ajaxChimp({                                                          
-          url: '//adcap.us2.list-manage.com/subscribe/post?u=21ec59a4dc5db917e4d7b0ad5&amp;id=bcc7a0772e'
+          url: '//adcap.us2.list-manage.com/subscribe/post?u=21ec59a4dc5db917e4d7b0ad5&amp;id=bcc7a0772e',
+          callback: logSubscribe
         });
       });
     });
+
+    function logSubscribe(response) {
+      if (response.result == "success") {
+        _gaq.push(['_trackEvent', 'Email', 'Subscribe', window.location.href]);
+      } else {
+        _gaq.push(['_trackEvent', 'Email', response.result, window.location.href]);
+      }
+    }
   </script>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
