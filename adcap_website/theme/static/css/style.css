@@ -2095,7 +2095,6 @@ header.sticky .navigation a.current-ele {
         position: absolute;
         top: 10px;
         color: #fff;
-        /*background-image: url("../img/sidemenu-icon-light.png");*/
         background-repeat: no-repeat;
         display: block;
         font-size: 20px;
@@ -2273,123 +2272,31 @@ height:100%;
 }
 
 .bg-img1 {
-    background-image: url("../img/full/hero-papers-1920x1280.png");
+    background-image: url("../img/full/hero-papers-1920x1280.jpg");
 }
 
 .bg-img2 {
-    background-image: url("../img/full/hero-deskjames-1920x1080.png");
+    background-image: url("../img/full/hero-deskjames-1920x1080.jpg");
 }
 
 .bg-img3 {
-    background-image: url("../img/full/hero-exitjames-1920x1280.png");
+    background-image: url("../img/full/hero-exitjames-1920x1280.jpg");
 }
 
 .bg-img4 {
-    background-image: url("../img/full/hero-footies-1920x1280.png");
+    background-image: url("../img/full/hero-footies-1920x1280.jpg");
 }
 
 .bg-img5 {
-    background-image: url("../img/full/hero-power-1920x1280.png");
+    background-image: url("../img/full/hero-power-1920x1280.jpg");
 }
 
 .bg-img6 {
-    background-image: url("../img/full/hero-robphone-1920x1280.png");
+    background-image: url("../img/full/hero-robphone-1920x1280.jpg");
 }
 
 .bg-img7 {
-    background-image: url("../img/full/hero-scrumboard-1920x1080.png");
-}
-
-.bg-img8 {
-    background-image: url("../img/full/08.jpg");
-}
-
-.bg-img9 {
-    background-image: url("../img/full/09.jpg");
-}
-
-.bg-img10 {
-    background-image: url("../img/full/10.jpg");
-}
-
-.bg-img11 {
-    background-image: url("../img/full/11.jpg");
-}
-
-.bg-img12 {
-    background-image: url("../img/full/12.jpg");
-}
-
-.bg-img13 {
-    background-image: url("../img/full/13.jpg");
-}
-
-.bg-img14 {
-    background-image: url("../img/full/14.jpg");
-}
-
-.bg-img15 {
-    background-image: url("../img/full/15.jpg");
-}
-
-.bg-img16 {
-    background-image: url("../img/full/16.jpg");
-}
-
-.bg-img17 {
-    background-image: url("../img/full/17.jpg");
-}
-
-.bg-img18 {
-    background-image: url("../img/full/18.jpg");
-}
-
-.bg-img19 {
-    background-image: url("../img/full/19.jpg");
-}
-
-.bg-img20 {
-    background-image: url("../img/full/20.jpg");
-}
-
-.bg-img21 {
-    background-image: url("../img/full/21.jpg");
-}
-
-.bg-img22 {
-    background-image: url("../img/full/22.jpg");
-}
-
-.bg-img23 {
-    background-image: url("../img/full/23.jpg");
-}
-
-.bg-img24 {
-    background-image: url("../img/full/24.jpg");
-}
-
-.bg-img25 {
-    background-image: url("../img/full/25.jpg");
-}
-
-.bg-img26 {
-    background-image: url("../img/full/26.jpg");
-}
-
-.bg-img27 {
-    background-image: url("../img/full/27.jpg");
-}
-
-.bg-img28 {
-    background-image: url("../img/full/28.jpg");
-}
-
-.bg-img29 {
-    background-image: url("../img/full/29.jpg");
-}
-
-.bg-img30 {
-    background-image: url("../img/full/30.jpg");
+    background-image: url("../img/full/hero-scrumboard-1920x1080.jpg");
 }
 
 .border-b-box {
