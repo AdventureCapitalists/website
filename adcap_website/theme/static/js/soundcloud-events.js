@@ -72,20 +72,22 @@ function handleErrorEvent(event) {
 
 $(document).ready( function() {
   var widget_iframe = document.getElementById("soundcloud_widget");
-  window.soundcloud_widget = SC.Widget(widget_iframe);
+  if (widget_iframe != null) {
+    window.soundcloud_widget = SC.Widget(widget_iframe);
 
-  window.current_song = "";
-  window.current_progress_bucket = 0;
+    window.current_song = "";
+    window.current_progress_bucket = 0;
 
-  soundcloud_widget.bind(SC.Widget.Events.READY, function() {
-    soundcloud_widget.bind(SC.Widget.Events.PLAY, handlePlayEvent(event));
-    soundcloud_widget.bind(SC.Widget.Events.PLAY_PROGRESS, handlePlayProgressEvent(event));
-    soundcloud_widget.bind(SC.Widget.Events.FINISH, handleFinishEvent(event));
-    soundcloud_widget.bind(SC.Widget.Events.PAUSE, handlePauseEvent(event));
-    soundcloud_widget.bind(SC.Widget.Events.SEEK, handleSeekEvent(event));
-    soundcloud_widget.bind(SC.Widget.Events.CLICK_DOWNLOAD, handleDownloadEvent(event));
-    soundcloud_widget.bind(SC.Widget.Events.CLICK_BUY, handleBuyEvent(event));
-    soundcloud_widget.bind(SC.Widget.Events.OPEN_SHARE_PANEL, handleShareEvent(event));
-    soundcloud_widget.bind(SC.Widget.Events.ERROR, handleErrorEvent(event));
-  });
+    soundcloud_widget.bind(SC.Widget.Events.READY, function() {
+      soundcloud_widget.bind(SC.Widget.Events.PLAY, handlePlayEvent(event));
+      soundcloud_widget.bind(SC.Widget.Events.PLAY_PROGRESS, handlePlayProgressEvent(event));
+      soundcloud_widget.bind(SC.Widget.Events.FINISH, handleFinishEvent(event));
+      soundcloud_widget.bind(SC.Widget.Events.PAUSE, handlePauseEvent(event));
+      soundcloud_widget.bind(SC.Widget.Events.SEEK, handleSeekEvent(event));
+      soundcloud_widget.bind(SC.Widget.Events.CLICK_DOWNLOAD, handleDownloadEvent(event));
+      soundcloud_widget.bind(SC.Widget.Events.CLICK_BUY, handleBuyEvent(event));
+      soundcloud_widget.bind(SC.Widget.Events.OPEN_SHARE_PANEL, handleShareEvent(event));
+      soundcloud_widget.bind(SC.Widget.Events.ERROR, handleErrorEvent(event));
+    });
+  }
 });
