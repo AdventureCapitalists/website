@@ -15,6 +15,13 @@
 {{ page.description }}
 {% endmetablock %}{% endblock %}
 
+{% block extra_css %}
+  <meta property="og:title" content="a19s: {{ page.meta_title }}" />
+  <meta property="og:site_name" content="Adventure Capitalists" />
+  <meta property="og:description" content="{{ page.meta_description }}" />
+  <meta property="og:image" content="http://adcap.biz/static/img/social/mvp_release-1200x1200.jpg" />
+{% endblock %}
+
 {% block intro %}
 <section class=
 "inner-intro bg-img{{ rand|add:"1234567"|make_list|random }} overlay-light parallax parallax-background2">

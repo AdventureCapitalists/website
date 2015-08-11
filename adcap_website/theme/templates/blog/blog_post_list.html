@@ -15,6 +15,16 @@
 {{ page.description }}
 {% endmetablock %}{% endblock %}
 
+{% block extra_css %}
+  <meta property="og:title" content="a19s Blog: Loud Music and Big Ideas for Startup People" />
+  <meta property="og:site_name" content="Adventure Capitalists" />
+  <meta property="og:description" content="Your startup game just got disrupted,
+  snacky. A pair of programmers lampoon hypergrowth software financing with
+  catchy punk rock tunes. Read the latest ideas dumped straight like a post-juice-cleanse
+  bowel movement from the brains of tech's latest iconoclasts." />
+  <meta property="og:image" content="http://adcap.biz/static/img/social/mvp_release-1200x1200.jpg" />
+{% endblock %}
+
 {% block title %}
 {% if page %}
 {{ page.title }}

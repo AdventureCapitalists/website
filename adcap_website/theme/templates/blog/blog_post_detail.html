@@ -12,6 +12,13 @@
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
+{% block extra_css %}
+  <meta property="og:title" content="a19s Blog - {{ blog_post.user.get_full_name|default:blog_post.user.username }}: {{ blog_post.meta_title }}" />
+  <meta property="og:site_name" content="Adventure Capitalists" />
+  <meta property="og:description" content="{{ blog_post.description }}" />
+{% endblock %}
+
+
 {% block title %}
 {{ blog_post.title }}
 {% endblock %}
