@@ -10,6 +10,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
+  <meta property="og:title" content="MVP, the debut release from Adventure Capitalists" />
+  <meta property="og:site_name" content="Adventure Capitalists" />
+  <meta property="og:description" content="Venture capital has a brand new sound
+  with Adventure Capitalists, a pair producing catchy punk songs lampooning the
+  startup game." />
+  <meta property="og:image" content="{% static "img/mvp_release-1200x1200.jpg" %}" />
+
   <link rel="shortcut icon" type="image/x-icon" href="{% static "img/favicon.ico" %}">
   <link rel="icon" type="image/png" href="{% static "img/favicon.ico" %}">
   <link rel="apple-touch-icon" href="{% static "img/favicon.ico" %}">
@@ -18,6 +25,7 @@
   <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
   <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
 {% endifinstalled %}
+
 
 {% compress css %}
   <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" />
