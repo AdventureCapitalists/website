@@ -27,46 +27,46 @@ function handlePlayProgressEvent(event) {
 
 function handleFinishEvent(event) {
   return function(event) {
-    ga('send', 'SoundCloud', 'Finish', window.current_song, {page: window.location.pathname}); 
+    ga('send', 'event', 'SoundCloud', 'Finish', window.current_song, {page: window.location.pathname}); 
   }
 }
 
 function handlePauseEvent(event) {
   return function(event) {
-    ga('send', 'SoundCloud', 'Pause', window.current_song, window.current_progress_bucket); 
+    ga('send', 'event', 'SoundCloud', 'Pause', window.current_song, window.current_progress_bucket); 
   }
 }
 
 function handleSeekEvent(event) {
   return function(event) {
-    ga('send', 'SoundCloud', 'Seek', window.current_song, window.current_progress_bucket); 
+    ga('send', 'event', 'SoundCloud', 'Seek', window.current_song, window.current_progress_bucket); 
   }
 }
 
 function handleDownloadEvent(event) {
   return function(event) {
-    ga('send', 'SoundCloud', 'Download', window.current_song, window.current_progress_bucket); 
+    ga('send', 'event', 'SoundCloud', 'Download', window.current_song, window.current_progress_bucket); 
     console.log("Download.");
   }
 }
 
 function handleBuyEvent(event) {
   return function(event) {
-    ga('send', 'SoundCloud', 'Buy', window.current_song, window.current_progress_bucket); 
+    ga('send', 'event', 'SoundCloud', 'Buy', window.current_song, window.current_progress_bucket); 
     console.log("Buy");
   }
 }
 
 function handleShareEvent(event) {
   return function(event) {
-    ga('send', 'SoundCloud', 'Share', window.current_song, window.current_progress_bucket); 
+    ga('send', 'event', 'SoundCloud', 'Share', window.current_song, window.current_progress_bucket); 
     console.log("Share.");
   }
 }
 
 function handleErrorEvent(event) {
   return function(event) {
-    ga('send', 'SoundCloud', 'Error', window.location.pathname); 
+    ga('send', 'event', 'SoundCloud', 'Error', window.location.pathname); 
   }
 }
 

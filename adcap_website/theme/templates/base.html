@@ -187,9 +187,9 @@
 
     function logSubscribe(response) {
       if (response.result == "success") {
-        ga('send', 'Email', 'Subscribe', 'Success', {page: window.location.pathname});
+        ga('send', 'event', 'Email', 'Subscribe', 'Success', {page: window.location.pathname});
       } else {
-        ga('send', 'Email', 'Error', response.result, {page: window.location.pathname});
+        ga('send', 'event', 'Email', 'Error', response.result, {page: window.location.pathname});
       }
     }
   </script>
