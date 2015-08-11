@@ -13,7 +13,7 @@ function handlePlayEvent(event) {
     setTimeout(function() {
       window.soundcloud_widget.getCurrentSound(function(sound) {
         window.current_song = sound.title;
-        ga('send', 'SoundCloud', 'Play', sound.title, {page: window.location.pathname});
+        ga('send', 'event', 'SoundCloud', 'Play', sound.title, {page: window.location.pathname});
       });
     }, 1);
   }
@@ -33,34 +33,31 @@ function handleFinishEvent(event) {
 
 function handlePauseEvent(event) {
   return function(event) {
-    ga('send', 'event', 'SoundCloud', 'Pause', window.current_song, window.current_progress_bucket); 
+    ga('send', 'event', 'SoundCloud', 'Pause', window.current_song, {percent_complete: window.current_progress_bucket}); 
   }
 }
 
 function handleSeekEvent(event) {
   return function(event) {
-    ga('send', 'event', 'SoundCloud', 'Seek', window.current_song, window.current_progress_bucket); 
+    ga('send', 'event', 'SoundCloud', 'Seek', window.current_song, {percent_complete: window.current_progress_bucket}); 
   }
 }
 
 function handleDownloadEvent(event) {
   return function(event) {
-    ga('send', 'event', 'SoundCloud', 'Download', window.current_song, window.current_progress_bucket); 
-    console.log("Download.");
+    ga('send', 'event', 'SoundCloud', 'Download', window.current_song, {percent_complete: window.current_progress_bucket}); 
   }
 }
 
 function handleBuyEvent(event) {
   return function(event) {
-    ga('send', 'event', 'SoundCloud', 'Buy', window.current_song, window.current_progress_bucket); 
-    console.log("Buy");
+    ga('send', 'event', 'SoundCloud', 'Buy', window.current_song, {percent_complete: window.current_progress_bucket}); 
   }
 }
 
 function handleShareEvent(event) {
   return function(event) {
-    ga('send', 'event', 'SoundCloud', 'Share', window.current_song, window.current_progress_bucket); 
-    console.log("Share.");
+    ga('send', 'event', 'SoundCloud', 'Share', window.current_song, {percent_complete: window.current_progress_bucket}); 
   }
 }
 
