@@ -366,3 +366,5 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+RICHTEXT_FILTER_LEVEL = 2
