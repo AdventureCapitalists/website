@@ -16,6 +16,11 @@
   <meta property="og:title" content="a19s Blog - {{ blog_post.user.get_full_name|default:blog_post.user.username }}: {{ blog_post.meta_title }}" />
   <meta property="og:site_name" content="Adventure Capitalists" />
   <meta property="og:description" content="{{ blog_post.description }}" />
+  {% if blog_post.featured_image %}
+  <meta property="og:image" content="https://adcap.biz/static/media/{{ blog_post.featured_image }}" />
+  {% else %}
+  <meta property="og:image" content="http://adcap.biz/static/img/social/mvp_release-1200x1200.jpg" />
+  {% endif %}
 {% endblock %}
 
 
