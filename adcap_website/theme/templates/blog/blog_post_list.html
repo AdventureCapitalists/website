@@ -155,10 +155,12 @@
 {% endfor %}
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-8">
+      {% pagination_for blog_posts %}
+    </div>
+  </div>
 </div>
-
-
-{% pagination_for blog_posts %}
 
 {% include "blog/includes/filter_panel.html" %}
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
