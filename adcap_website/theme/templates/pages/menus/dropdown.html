@@ -23,7 +23,6 @@
 
     {% endif %}
     {% endfor %}
-    </li>
 
 {% else %}
 <li>
@@ -37,7 +36,7 @@
         </ul>
     </li>
     {% else %}
-    <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+    <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
     {% endif %}
     {% endif %}
     {% endfor %}
