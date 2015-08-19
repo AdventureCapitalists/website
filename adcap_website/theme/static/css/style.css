@@ -1547,45 +1547,47 @@ header.sticky .navigation a.current-ele {
         height: 10px;
     }
 
-    .background--dark .side-menu-btn input {
+    .background--dark .side-menu-btn .newsletter input {
         border-color: #fff;
         color: #fff;
     }
 
-    .background--dark.side-menu-btn input::-webkit-input-placeholder {
+    .background--dark .side-menu-btn .newsletter input::-webkit-input-placeholder {
         color: #fff;
     }
 
-    .background--dark.side-menu-btn input:-moz-input-placeholder {
+    .background--dark .side-menu-btn .newsletter input:-moz-input-placeholder {
         color: #fff;
     }
 
-    .background--dark.side-menu-btn input::-moz-input-placeholder {
+    .background--dark .side-menu-btn .newsletter input::-moz-input-placeholder {
         color: #fff;
     }
 
-    .background--dark.side-menu-btn input::-ms-input-placeholder {
+    .background--dark .side-menu-btn .newsletter input::-ms-input-placeholder {
         color: #fff;
     }
 
-    .background--light .side-menu-btn input, .header.sticky .side-menu-btn input {
+    .side-menu-btn .newsletter input, .background--light .side-menu-btn input,
+      .header.sticky .side-menu-btn .newsletter input {
         border-color: #323232;
         color: #323232;
     }
 
-    .background--light .side-menu-btn input::-webkit-input-placeholder {
+    .side-menu-btn .newsletter input::-webkit-input-placeholder,
+    .background--light .side-menu-btn .newsletter input::-webkit-input-placeholder {
         color: #323232;
     }
 
-    .background--light .side-menu-btn input:-moz-input-placeholder {
+    .background--light .side-menu-btn .newsletter input:-moz-input-placeholder {
         color: #323232;
     }
 
-    .background--light .side-menu-btn input::-moz-input-placeholder {
+    .background--light .side-menu-btn .newsletter input::-moz-input-placeholder {
         color: #323232;
     }
 
-    .background--light .side-menu-btn input::-ms-input-placeholder {
+    .background--light .side-menu-btn .newsletter input::-ms-input-placeholder {
         color: #323232;
     }
 
