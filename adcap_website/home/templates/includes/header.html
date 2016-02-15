@@ -1,0 +1,45 @@
+{% load static wagtailcore_tags adcap_tags %}
+
+{% get_site_root as site_root %}
+<header class="header">
+  <div class="container">
+
+    <!-- logo -->
+    <div class="logo">
+      <a href="{% pageurl site_root %}">
+        <img class="l-black" src="{% static "img/logo-black.png" %}" />
+        <img class="l-white" src="{% static "img/logo-white.png" %}" />
+        <img class="l-color" src="{% static "img/logo-color.png" %}" />
+      </a>
+    </div>
+    <!--End logo-->
+
+    <!-- Rightside Menu (Search, Cart, Bart icon) -->
+    <div class="side-menu-btn">
+      <ul>
+        <!-- Header Email -->
+        <li class="newsletter hidden-xs">
+        <form id="header-email" class="subscribe-form header-form">
+          <input id="header-email-input" type="email"
+          class="newsletter newsletter-input input-sm" placeholder="Signup for Email">
+          <label class="newsletter" for="header-email-input"></label>
+        </form>
+        </li>
+        <!-- End Header Email -->
+        <!-- Search Icon -->
+        <li class="">
+        <a class="right-icon search toggle-menu menu-top push-body"><i class="fa fa-search"></i></a>
+        </li>
+        <!-- End Search Icon -->
+      </ul>
+    </div>
+    <!-- End Rightside menu -->
+    <nav class="navigation"> 
+      <ul>
+        {% block menu %}
+          {% top_menu parent=site_root calling_page=self %}
+        {% endblock %}
+      </ul>
+    </nav>
+  </div>
+</header>
