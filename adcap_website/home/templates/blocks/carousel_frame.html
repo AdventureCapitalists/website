@@ -1,0 +1,65 @@
+{% load wagtailimages_tags %}
+
+<li>
+  {% image value.image min-1920x1080%}"
+  <div class="overlay-hero overlay-{{ value.color }}">
+    {% if value.color == "dark" %}
+    <div class="container caption-hero light-color">
+    {% else %}
+    <div class="container caption-hero dark-color">
+    {% endif %}
+      <div class="inner-caption">
+        <h2 class="h2">{{ value.headline }}</h2>
+
+        {% if value.taglines %}
+        {% for block in value.taglines %}
+        <p class="lead">{{ block }}</p>
+        {% endfor %}
+        {% endif %}
+
+        {% if value.call_to_action %}
+        <br />
+        <div>
+          {% for block in value.call_to_action %}
+            {% if forloop.last %}
+              {% if value.color == "dark" %}
+                <a class="btn btn-md btn-white" href="{{ block.uri }}">
+                  {{ block.text }}
+                </a>
+              {% else %}
+                <a class="btn btn-md btn-black" href="{{ block.uri }}">
+                  {{ block.text }}
+                </a>
+              {% endif %}
+            {% else %}
+              {% if value.color == "dark" %}
+                <a class="btn btn-md btn-white-line xs-hidden" href="{{ block.uri }}">
+                  {{ block.text }}
+                </a>
+                <span class="btn-space-10 xs-hidden"></span>
+              {% else %}
+                <a class="btn btn-md btn-black-line xs-hidden" href="{{ block.uri }}">
+                  {{ block.text }}
+                </a>
+                <span class="btn-space-10 xs-hidden"></span>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if value.signup_form %}
+        <br />
+        <div class="col-sm-offset-4 col-sm-4 newsletter">
+          <form id="index-carousel-email" class="subscribe-form">
+            <input id="index-carousel-email-input" type="email"
+            class="newsletter-input input-md newsletter-input mb-0 white" placeholder="Enter Your Email">
+            <label for="index-carousel-email-input"></label>
+            <button class="newsletter-btn btn btn-xs btn-white white" type="submit" value=""><i class="fa fa-angle-right mr-0"></i></button>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</li>
