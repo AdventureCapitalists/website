@@ -26,7 +26,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
 class LinkBlock(StructBlock):
-    uri = PageChooserBlock(required=True)
+    uri = CharBlock(required=True)
     text = CharBlock(required=True)
 
     class Meta:
