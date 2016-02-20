@@ -10,6 +10,7 @@ from wagtail.wagtailcore.blocks import BooleanBlock
 from wagtail.wagtailcore.blocks import CharBlock
 from wagtail.wagtailcore.blocks import ChoiceBlock
 from wagtail.wagtailcore.blocks import ListBlock
+from wagtail.wagtailcore.blocks import PageChooserBlock
 from wagtail.wagtailcore.blocks import RawHTMLBlock
 from wagtail.wagtailcore.blocks import RichTextBlock
 from wagtail.wagtailcore.blocks import StreamBlock
@@ -25,7 +26,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
 class LinkBlock(StructBlock):
-    uri = URLBlock(required=True)
+    uri = PageChooserBlock(required=True)
     text = CharBlock(required=True)
 
     class Meta:
