@@ -1,0 +1,38 @@
+{% load wagtailimages_tags %}
+{% image value.image max-1920x900 as background %}
+{% if value.color %}
+<section class="overlay-{{ value.color }}80 {{ value.color }}-bg ptb ptb-sm-80"
+data-stellar-background-ratio="0.8" id="testimonial" style=
+"background-image: url('{{ background.url }}');">
+{% else %}
+<section class="overlay-dark80 dark-bg ptb ptb-sm-80"
+data-stellar-background-ratio="0.5" id="testimonial" style=
+"background-image: url('{{ background.url }}');">
+{% endif %}
+  <div class="container">
+    {% if value.color and value.color == 'light' %}
+    <div class="owl-carousel testimonial-carousel nf-carousel-theme black">
+    {% else %}
+    <div class="owl-carousel testimonial-carousel nf-carousel-theme white">
+    {% endif %}
+    {% for block in value.quotations %}
+      <div class="item">
+        {% if value.color %}
+        <div class="testimonial text-center {{ value.color }}-color">
+        {% else %}
+        <div class="testimonial text-center dark-color">
+        {% endif %}
+          <div class="container-icon fa fa-quote-right" style=
+          "font-style: italic"></div>
+
+          <p class="lead">" {{ block.quotation }} "</p>
+
+          <h6 class="quote-author">{{ block.author }}  <span style=
+          "font-weight: 400;">{{ block.title }}</span></h6>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+

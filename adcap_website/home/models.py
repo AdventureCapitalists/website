@@ -141,6 +141,29 @@ class ContentRow(StreamBlock):
         template = 'blocks/content_row.html'
 
 
+class QuoteBlock(StructBlock):
+    quotation = CharBlock()
+    author = CharBlock(required=False)
+    title = CharBlock(required=False)
+
+    class Meta:
+        icon = 'openquote'
+
+
+class QuotationsBlock(StructBlock):
+    quotations = ListBlock(QuoteBlock())
+    image = ImageChooserBlock(required=True,
+                              help_text='The image serving as the background '
+                                        'of the quotations. Minimum 1080 pixels '
+                                        'wide.')
+    color = ChoiceBlock([('light', 'Light'),
+                         ('dark', 'Dark')])
+
+    class Meta:
+        icon = 'openquote'
+        template = 'blocks/quotations.html'
+
+
 '''Page models'''
 
 
@@ -155,6 +178,7 @@ class HomePage(Page):
                                                          'of images with text '
                                                          'overlaid.')),
                         ('content_row', ContentRow()),
+                        ('quotations', QuotationsBlock()),
                         ('paragraph', RichTextBlock()),
                         ('image', ImageChooserBlock())], blank=True)
 
