@@ -1,0 +1,14 @@
+<div class="col-md-{{ value.width }}{% if value.offset %}
+  col-md-offset-{{ value.offset }}{% endif %}">
+  {% for block in value.body %}
+  {% if block.block_type == 'spacer' %}
+  <div class="spacer-{{block}}"></div>
+  {% elif block.block_type == 'call_to_action' %}
+  {% for subblock in block.value %}
+  {{ subblock }}
+  {% endfor %}
+  {% else %}
+  {{ block }}
+  {% endif %}
+  {% endfor %}
+</div>

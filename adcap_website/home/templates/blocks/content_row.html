@@ -1,0 +1,10 @@
+<section{% if value.title %} id="{{ value.title }}"{% endif %} class="wow fadeIn ptb ptb-sm-80">
+  <div class="container">
+    <div class="row">
+      {% for block in value %}
+        {{ block }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<hr />

@@ -33,11 +33,26 @@ class LinkBlock(StructBlock):
         icon = 'link'
 
 
+class CallToActionBlock(LinkBlock):
+    button_icon = CharBlock(required=False)
+    color = ChoiceBlock([('black', 'Black'),
+                         ('white', 'White')],
+                        required=True)
+    size = ChoiceBlock([('lg', 'Large'),
+                        ('md', 'Medium'),
+                        ('sm', 'Small'),
+                        ('xs', 'Extra Small')])
+
+    class Meta:
+        icon = 'link'
+        template = 'blocks/call_to_action.html'
+
+
 class CarouselFrame(StructBlock):
     headline = CharBlock(required=True,
                          help_text='The main, all caps text of the frame.')
-    taglines = ListBlock(CharBlock(help_text='The smaller, regular cased text under the '
-                                             'headline.'))
+    taglines = ListBlock(CharBlock(help_text='The smaller, regular cased text '
+                                             'under the headline.'))
     image = ImageChooserBlock(required=True,
                               help_text='The image serving as the background '
                                         'of the frame. Minimum 1080 pixels '
@@ -45,10 +60,11 @@ class CarouselFrame(StructBlock):
     color = ChoiceBlock(choices=[('dark', 'Dark'),
                                  ('light', 'Light')],
                         icon='cog')
-    call_to_action = ListBlock(LinkBlock(classname='call_to_action'),
-                               help_text='The large button calling to user to'
-                                         'act. Last element receives the '
-                                         'most emphasis.')
+    call_to_action = ListBlock(LinkBlock(),
+                               required=False,
+                               help_text='Large button to direct user to '
+                                         'specific content. Last element '
+                                         'has greatest emphasis.')
     signup_form = BooleanBlock(required=False,
                                help_text='Check to display an email '
                                          'signup form in this frame.')
@@ -56,6 +72,73 @@ class CarouselFrame(StructBlock):
     class Meta:
         icon = 'image'
         template = 'blocks/carousel_frame.html'
+
+
+class ContentBlock(StructBlock):
+    width = ChoiceBlock(choices=[('2', '2 columns'),
+                                 ('3', '3 columns'),
+                                 ('4', '4 columns'),
+                                 ('5', '5 columns'),
+                                 ('6', '6 columns'),
+                                 ('7', '7 columns'),
+                                 ('8', '8 columns'),
+                                 ('9', '9 columns'),
+                                 ('10', '10 columns'),
+                                 ('11', '11 columns'),
+                                 ('12', '12 columns')],
+                        required=True,
+                        help_text='Length in Bootstrap columns for '
+                                  'display on desktop.')
+    offset = ChoiceBlock(choices=[('2', '2 columns'),
+                                  ('3', '3 columns'),
+                                  ('4', '4 columns'),
+                                  ('5', '5 columns'),
+                                  ('6', '6 columns'),
+                                  ('7', '7 columns'),
+                                  ('8', '8 columns'),
+                                  ('9', '9 columns'),
+                                  ('10', '10 columns'),
+                                  ('11', '11 columns'),
+                                  ('12', '12 columns')],
+                         required=False,
+                         help_text='Offset in Bootstrap columns for '
+                                   'display on desktop.')
+
+    class Meta:
+        icon = 'doc-empty'
+
+
+class PromoParagraphBlock(ContentBlock):
+    body = StreamBlock([('text', RichTextBlock()),
+                        ('call_to_action', ListBlock(CallToActionBlock())),
+                        ('spacer', ChoiceBlock(choices=[('15', '15 pixels'),
+                                                        ('30', '30 pixels'),
+                                                        ('45', '45 pixels'),
+                                                        ('60', '60 pixels'),
+                                                        ('75', '75 pixels'),
+                                                        ('90', '90 pixels')],
+                                               required=False))])
+    class Meta:
+        template = 'blocks/promo_paragraph.html'
+
+
+class SkillBarBlock(ContentBlock):
+
+    skills = ListBlock(StructBlock([('skill_percentage', CharBlock()),
+                                    ('skill_name', CharBlock())]))
+    class Meta:
+        icon = 'media'
+        template = 'blocks/skillbar.html'
+
+
+class ContentRow(StreamBlock):
+    title = CharBlock(required=False)
+    promo_paragraph = PromoParagraphBlock()
+    skillbar = SkillBarBlock()
+
+    class Meta:
+        icon = 'horizontalrule'
+        template = 'blocks/content_row.html'
 
 
 '''Page models'''
@@ -71,6 +154,7 @@ class HomePage(Page):
                                                          'scrolling set '
                                                          'of images with text '
                                                          'overlaid.')),
+                        ('content_row', ContentRow()),
                         ('paragraph', RichTextBlock()),
                         ('image', ImageChooserBlock())], blank=True)
 

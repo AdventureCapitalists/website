@@ -1,0 +1,10 @@
+<div class="col-md-{{ value.width }}{% if value.offset %}
+  col-md-offset-{{ value.offset }}{% endif %}">
+  {% for block in value.skills %}
+  <div class="skillbar" data-percent="{{ block.skill_percentage}}">
+    <div class="skillbar-title">{{ block.skill_name }}</div>
+    <div class="skill-bar-percent">{{ block.skill_percentage }}</div>
+    <div class="skillbar-bar"></div>
+  </div>
+  {% endfor %}
+</div>
