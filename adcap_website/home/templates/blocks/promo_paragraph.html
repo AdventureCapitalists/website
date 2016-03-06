@@ -1,5 +1,6 @@
 <div class="col-md-{{ value.width }}{% if value.offset %}
-  col-md-offset-{{ value.offset }}{% endif %}">
+  col-md-offset-{{ value.offset }}{% endif %}{% if value.align %}
+  {{ value.align }}{% endif %}">
   {% for block in value.body %}
   {% if block.block_type == 'spacer' %}
   <div class="spacer-{{block}}"></div>

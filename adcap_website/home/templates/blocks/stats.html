@@ -1,0 +1,25 @@
+{% load wagtailimages_tags %}
+{% image value.image fill-1920x600-c90 as background %}
+{% if value.color and value.color == 'light'%}
+<section class="overlay-light80 dark-color ptb-80"
+data-stellar-background-ratio="0.5" id="counter" style=
+"background-image: url('{{ background.url }}');">
+{% else %}
+<section class="overlay-dark80 light-color ptb-80"
+data-stellar-background-ratio="0.5" id="counter" style=
+"background-image: url('{{ background.url }}');">
+{% endif %}
+  <div class="container">
+    <div class="row">
+    {% for block in value.stats %}
+      <div class="col-md-3 mb-sm-30">
+        <h1 class="counter" data-count="{{ block.count }}">
+          {{ block.count }}
+        </h1>
+        <h6>{{ block.label }}</h6>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+

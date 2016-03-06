@@ -103,6 +103,13 @@ class ContentBlock(StructBlock):
                          required=False,
                          help_text='Offset in Bootstrap columns for '
                                    'display on desktop.')
+    align = ChoiceBlock(choices=[('text-left', 'Left aligned text'),
+                                 ('text-center', 'Center aligned text'),
+                                 ('text-right', 'Right aligned text'),
+                                 ('text-justify', 'Justified text'),
+                                 ('text-nowrap', 'No wrap text')],
+                        required=False,
+                        help_text='Alignment for text in content block.')
 
     class Meta:
         icon = 'doc-empty'
@@ -118,27 +125,50 @@ class PromoParagraphBlock(ContentBlock):
                                                         ('75', '75 pixels'),
                                                         ('90', '90 pixels')],
                                                required=False))])
+
     class Meta:
         template = 'blocks/promo_paragraph.html'
+        icon = 'doc-full'
 
 
-class SkillBarBlock(ContentBlock):
+class SkillbarBlock(ContentBlock):
 
     skills = ListBlock(StructBlock([('skill_percentage', CharBlock()),
                                     ('skill_name', CharBlock())]))
+
     class Meta:
-        icon = 'media'
+        icon = 'form'
         template = 'blocks/skillbar.html'
 
 
-class ContentRow(StreamBlock):
-    title = CharBlock(required=False)
-    promo_paragraph = PromoParagraphBlock()
-    skillbar = SkillBarBlock()
+class IconBlurbBlock(ContentBlock):
+    icon = CharBlock(help_text='Text block passed as the icon selected. '
+                               'Choose between Ionic Icons or FontAwesome.')
+    headline = CharBlock(required=False)
+    body = RichTextBlock(required=False)
 
     class Meta:
-        icon = 'horizontalrule'
+        icon = 'image'
+        template = 'blocks/icon_blurb.html'
+
+
+class ContentRow(StreamBlock):
+    promo_paragraph = PromoParagraphBlock()
+    skillbar = SkillbarBlock()
+    icon_blurb = IconBlurbBlock()
+
+    class Meta:
+        icon = 'folder'
         template = 'blocks/content_row.html'
+
+
+class ParallaxBlock(StructBlock):
+    image = ImageChooserBlock(required=True,
+                              help_text='The image serving as the background '
+                                        'of the quotations. Minimum 1080 '
+                                        'pixels wide.')
+    color = ChoiceBlock([('light', 'Light'),
+                         ('dark', 'Dark')])
 
 
 class QuoteBlock(StructBlock):
@@ -150,18 +180,25 @@ class QuoteBlock(StructBlock):
         icon = 'openquote'
 
 
-class QuotationsBlock(StructBlock):
+class QuotationsBlock(ParallaxBlock):
     quotations = ListBlock(QuoteBlock())
-    image = ImageChooserBlock(required=True,
-                              help_text='The image serving as the background '
-                                        'of the quotations. Minimum 1080 pixels '
-                                        'wide.')
-    color = ChoiceBlock([('light', 'Light'),
-                         ('dark', 'Dark')])
 
     class Meta:
         icon = 'openquote'
         template = 'blocks/quotations.html'
+
+
+class StatBlock(StructBlock):
+    label = CharBlock()
+    count = CharBlock()
+
+
+class StatsBlock(ParallaxBlock):
+    stats = ListBlock(StatBlock())
+
+    class Meta:
+        icon = 'list-ol'
+        template = 'blocks/stats.html'
 
 
 '''Page models'''
@@ -179,9 +216,10 @@ class HomePage(Page):
                                                          'overlaid.')),
                         ('content_row', ContentRow()),
                         ('quotations', QuotationsBlock()),
+                        ('stats', StatsBlock()),
                         ('paragraph', RichTextBlock()),
-                        ('image', ImageChooserBlock())], blank=True)
+                        ('image', ImageChooserBlock())],
+                       blank=True)
 
-HomePage.content_panels = [FieldPanel('title',
-                                      classname='full title'),
+HomePage.content_panels = [FieldPanel('title'),
                            StreamFieldPanel('body')]
