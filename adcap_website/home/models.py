@@ -22,7 +22,8 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 class LinkBlock(StructBlock):
     uri = CharBlock(required=True)
-    text = CharBlock(required=True)
+    text = CharBlock(required=False)
+    icon = CharBlock(required=False)
 
     class Meta:
         icon = 'link'
@@ -254,6 +255,19 @@ class SoundCloudBlock(StructBlock):
         template = 'blocks/soundcloud.html'
 
 
+class TeamMemberBlock(StructBlock):
+    name = CharBlock()
+    title = CharBlock(required=False)
+    qualifications = CharBlock(required=False)
+    image = ImageChooserBlock()
+    links = ListBlock(LinkBlock(),
+                      required=False)
+
+    class Meta:
+        icon = 'user'
+        template = 'blocks/team_member.html'
+
+
 '''Page models'''
 
 
@@ -267,6 +281,11 @@ class HomePage(Page):
                                                          'scrolling set '
                                                          'of images with text '
                                                          'overlaid.')),
+                        ('team_carousel', ListBlock(TeamMemberBlock(),
+                                                    icon='group',
+                                                    template='blocks/'
+                                                             'team_carousel.'
+                                                             'html')),
                         ('content_row', ContentRow()),
                         ('quotations', QuotationsBlock()),
                         ('stats', StatsBlock()),

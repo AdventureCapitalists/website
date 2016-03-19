@@ -1,0 +1,29 @@
+{% load wagtailimages_tags %}
+{% image value.image fill-458x539-c90 as photo %}
+<div class="item">
+  <div class="team-item nf-col-padding">
+    <div class="team-item-img">
+      <img alt="{{ value.name }}" src="{{ photo.url }}">
+      <div class="team-item-detail">
+        <div class="team-item-detail-inner light-color">
+          <h5>{{ value.name }}</h5>
+          <p>{{ value.qualifications }}</p>
+          {% if value.links %}
+          <ul class="social">
+            {% for link in value.links %}
+            <li>
+              <a class="{{ link.icon }}" href=
+              "{{ link.uri }}" target="_blank"></a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="team-item-info">
+      <h5>{{ value.name }}</h5>
+      <p>{{ value.title }}</p>
+    </div>
+  </div>
+</div>
