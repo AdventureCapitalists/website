@@ -1,9 +1,11 @@
+var os = require('os');
 var gulp = require('gulp');
 var sass = require('gulp-uglify');
 var watch = require('gulp-watch');
 var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var livereload = require('gulp-livereload');
+var open = require('gulp-open');
 
 var exec;
 exec = require('child_process').exec;
@@ -17,6 +19,19 @@ gulp.task('watch', function() {
 
 });
 
+var browser = os.platform() === 'linux' ? 'google-chrome' : (
+  os.platform() === 'darwin' ? 'google chrome' : (
+  os.platform() === 'win32' ? 'chrome' : 'firefox'));
+
+gulp.task('open', function(){
+  var options = {
+    uri: 'http://localhost:8000',
+    app: browser 
+  };
+  gulp.src(__filename)
+  .pipe(open(options));
+});
+
 gulp.task('django', function() {
   var proc;
   proc = exec('python adcap_website/manage.py runserver');
@@ -28,4 +43,4 @@ gulp.task('django', function() {
   });
 });
 
-gulp.task('default', ['django', 'watch']);
+gulp.task('default', ['django', 'watch', 'open']);
