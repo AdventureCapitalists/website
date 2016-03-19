@@ -593,7 +593,7 @@ function shortcodeElements() {
     //Parallax plugin Js Function element
     $.stellar({
         horizontalScrolling: false,
-        verticalOffset: 0
+        verticalOffset: 150
     });
 
 
