@@ -1,0 +1,26 @@
+{% load wagtailimages_tags %}
+{% image value.image fill-1920x1280-c90 as background %}
+{% if value.color and value.color == 'light'%}
+<section class="inner-intro bg-img overlay-light parallax parallax-background2"
+  style="background-image: url('{{ background.url }}');">
+{% else %}
+<section class="inner-intro bg-img overlay-dark parallax parallax-background2"
+  style="background-image: url('{{ background.url }}');">
+{% endif %}
+  <div class="container">
+    <div class="row title">
+      {% if value.color and value.color == 'light' %}
+      <h2 class="h2">{{ value.title }}</h2>
+      {% else %}
+      <h2 class="h2 white">{{ value.title }}</h2>
+      {% endif %}
+      {% if value.subtitle %}
+      <div class="page-breadcrumb">
+      {{ value.subtitle }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<br />

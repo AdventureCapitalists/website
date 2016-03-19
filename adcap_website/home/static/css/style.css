@@ -2326,39 +2326,11 @@ height:100%;
     background-size: cover !important;
 }
 
-.bg-img1, .bg-img2, .bg-img3, .bg-img4, .bg-img5, .bg-img6, .bg-img7, .bg-img8, .bg-img9, .bg-img10, .bg-img11, .bg-img12, .bg-img13, .bg-img14, .bg-img15, .bg-img16, .bg-img17, .bg-img18, .bg-img19, .bg-img20, .bg-img21, .bg-img22, .bg-img23, .bg-img24, .bg-img25, .bg-img26, .bg-img27, .bg-img28, .bg-img29, .bg-img30 {
+.bg-img {
     background-size: cover !important;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-
-.bg-img1 {
-    background-image: url("../img/full/hero-papers-1920x1280.jpg");
-}
-
-.bg-img2 {
-    background-image: url("../img/full/hero-deskjames-1920x1080.jpg");
-}
-
-.bg-img3 {
-    background-image: url("../img/full/hero-exitjames-1920x1280.jpg");
-}
-
-.bg-img4 {
-    background-image: url("../img/full/hero-footies-1920x1280.jpg");
-}
-
-.bg-img5 {
-    background-image: url("../img/full/hero-champagne-1920x1280.jpg");
-}
-
-.bg-img6 {
-    background-image: url("../img/full/hero-robphone-1920x1280.jpg");
-}
-
-.bg-img7 {
-    background-image: url("../img/full/hero-scrumboard-1920x1080.jpg");
 }
 
 .border-b-box {

@@ -201,6 +201,21 @@ class StatsBlock(ParallaxBlock):
         template = 'blocks/stats.html'
 
 
+class ShortHeroBlock(StructBlock):
+    image = ImageChooserBlock(required=True,
+                              help_text='The image serving as the header image '
+                                        'for the page. Shorter than the '
+                                        'carousel, intended for sub pages.')
+    color = ChoiceBlock([('light', 'Light'),
+                         ('dark', 'Dark')])
+    title = CharBlock()
+    subtitle = CharBlock(required=False)
+
+    class Meta:
+        icon = 'image'
+        template = 'blocks/short_hero.html'
+
+
 '''Page models'''
 
 
@@ -217,8 +232,7 @@ class HomePage(Page):
                         ('content_row', ContentRow()),
                         ('quotations', QuotationsBlock()),
                         ('stats', StatsBlock()),
-                        ('paragraph', RichTextBlock()),
-                        ('image', ImageChooserBlock())],
+                        ('short_hero', ShortHeroBlock())],
                        blank=True)
 
 HomePage.content_panels = [FieldPanel('title'),
