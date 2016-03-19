@@ -10,15 +10,10 @@ from wagtail.wagtailcore.blocks import BooleanBlock
 from wagtail.wagtailcore.blocks import CharBlock
 from wagtail.wagtailcore.blocks import ChoiceBlock
 from wagtail.wagtailcore.blocks import ListBlock
-from wagtail.wagtailcore.blocks import PageChooserBlock
-from wagtail.wagtailcore.blocks import RawHTMLBlock
 from wagtail.wagtailcore.blocks import RichTextBlock
 from wagtail.wagtailcore.blocks import StreamBlock
 from wagtail.wagtailcore.blocks import StructBlock
-from wagtail.wagtailcore.blocks import TextBlock
-from wagtail.wagtailcore.blocks import URLBlock
 
-from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
@@ -152,10 +147,20 @@ class IconBlurbBlock(ContentBlock):
         template = 'blocks/icon_blurb.html'
 
 
+class DefinitionListBlock(ContentBlock):
+    definitions = ListBlock(StructBlock([('title', CharBlock()),
+                                         ('definition', CharBlock())]))
+
+    class Meta:
+        icon = 'tag'
+        template = 'blocks/definition_list.html'
+
+
 class ContentRow(StreamBlock):
     promo_paragraph = PromoParagraphBlock()
     skillbar = SkillbarBlock()
     icon_blurb = IconBlurbBlock()
+    definition_list = DefinitionListBlock()
 
     class Meta:
         icon = 'folder'
@@ -234,6 +239,21 @@ class StatementBlock(StructBlock):
         template = 'blocks/statement.html'
 
 
+class SoundCloudBlock(StructBlock):
+    track_id = CharBlock(required=False)
+    playlist_id = CharBlock(required=False)
+    auto_play = BooleanBlock(required=False)
+    hide_related = BooleanBlock(required=False)
+    show_comments = BooleanBlock(required=False)
+    show_user = BooleanBlock(required=False)
+    show_reposts = BooleanBlock(required=False)
+    visual = BooleanBlock(required=False)
+
+    class Meta:
+        icon = 'media'
+        template = 'blocks/soundcloud.html'
+
+
 '''Page models'''
 
 
@@ -251,7 +271,8 @@ class HomePage(Page):
                         ('quotations', QuotationsBlock()),
                         ('stats', StatsBlock()),
                         ('short_hero', ShortHeroBlock()),
-                        ('statement', StatementBlock())],
+                        ('statement', StatementBlock()),
+                        ('soundcloud', SoundCloudBlock())],
                        blank=True)
 
 HomePage.content_panels = [FieldPanel('title'),

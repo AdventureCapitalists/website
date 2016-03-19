@@ -1,0 +1,9 @@
+<section class="pt pt-sm-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <iframe height="800" width="800" id="soundcloud_widget" name="soundcloud_widget" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/{% if value.track_id %}tracks/{{ value.track_id}}{% elif value.playlist_id %}playlists/{{ value.playlist_id}}{% else %}playlists/133452560{% endif %}&amp;auto_play={% if value.auto_play %}true{% else %}false{% endif%}&amp;hide_related={% if value.hide_related %}true{% else %}false{% endif %}&amp;show_comments={%if value.show_comments %}true{% else %}false{% endif %}&amp;show_user={% if value.show_user %}true{% else %}false{% endif %}&amp;show_reposts={% if value.show_reposts %}true{% else %}false{% endif %}&amp;visual={% if value.visual %}true{% else %}false{% endif %}"></iframe>
+      </div>
+    </div>
+  </div>
+</section>

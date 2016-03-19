@@ -1,0 +1,8 @@
+<div class="col-md-{{ value.width}} col-sm-6 mb-30 {% if value.offset %}
+  col-md-offset-{{ value.offset }}{% endif %}">
+  <div class="project-detail-block">
+    {% for definition in value.definitions %}
+    <p><strong class="dark-color">{{ definition.title }}:</strong> {{ definition.definition }}</p>
+    {% endfor %}
+  </div>
+</div>
