@@ -216,6 +216,24 @@ class ShortHeroBlock(StructBlock):
         template = 'blocks/short_hero.html'
 
 
+class StatementBlock(StructBlock):
+    title = CharBlock()
+    subtitles = ListBlock(CharBlock(), required=False)
+    call_to_action = ListBlock(CallToActionBlock(),
+                               required=False,
+                               help_text='Large button to direct user to '
+                                         'specific content. Last element '
+                                         'has greatest emphasis.')
+    signup_form = BooleanBlock(required=False,
+                               help_text='Check to display an email '
+                                         'signup form in this frame.')
+    caveats = ListBlock(CharBlock(), required=False)
+
+    class Meta:
+        icon = 'pilcrow'
+        template = 'blocks/statement.html'
+
+
 '''Page models'''
 
 
@@ -232,7 +250,8 @@ class HomePage(Page):
                         ('content_row', ContentRow()),
                         ('quotations', QuotationsBlock()),
                         ('stats', StatsBlock()),
-                        ('short_hero', ShortHeroBlock())],
+                        ('short_hero', ShortHeroBlock()),
+                        ('statement', StatementBlock())],
                        blank=True)
 
 HomePage.content_panels = [FieldPanel('title'),

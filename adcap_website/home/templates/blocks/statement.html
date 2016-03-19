@@ -1,0 +1,39 @@
+<section class="dark-bg ptb-60">
+  <div class="container text-center background--dark">
+    <div class="row">
+      <h4 class="mb-15">{{ value.title }}</h4>
+      {% if value.subtitles %}
+      {% for subtitle in value.subtitles %}
+      <h5 class="mb-15">{{ subtitle }}</h5>
+      {% endfor %}
+      {% endif %}
+    </div>
+    {% if value.call_to_action %}
+    <div class="row">
+      {% for call_to_action in value.call_to_action %}
+        {{ call_to_action }}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if value.signup_form %}
+    <div class="row">
+      <div class="newsletter col-xs-6 col-xs-offset-6 col-md-4 col-md-offset-4">
+        <form class="subscribe-form" id="music-carousel-email" name="music-carousel-email">
+          <input class="newsletter-input input-md mb-0 white" id="music-email-input" type="email" placeholder="Enter your email for trenchant insights...">
+          <label for="music-email-input"></label>
+          <button class="newsletter-btn btn btn-xs btn-white" type="submit" value=""></button>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+    {% if value.caveats %}
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        {% for caveat in value.caveats %}
+        <p>{{ caveat }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
