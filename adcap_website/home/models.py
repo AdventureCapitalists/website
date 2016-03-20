@@ -17,17 +17,18 @@ from wagtail.wagtailforms.models import AbstractEmailForm
 from wagtail.wagtailforms.models import AbstractFormField
 
 from wagtail.wagtailcore.blocks import ListBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 
-from blocks import CarouselFrame
-from blocks import ShortHeroBlock
-from blocks import SectionBlock
-from blocks import QuotationsBlock
-from blocks import StatsBlock
-from blocks import StatementBlock
-from blocks import TeamMemberBlock
-from blocks import SoundCloudBlock
-from blocks import SidebarCallOutBlock
-from blocks import CallToActionBlock
+from home.blocks import CarouselFrame
+from home.blocks import ShortHeroBlock
+from home.blocks import SectionBlock
+from home.blocks import QuotationsBlock
+from home.blocks import StatsBlock
+from home.blocks import StatementBlock
+from home.blocks import TeamMemberBlock
+from home.blocks import SoundCloudBlock
+from home.blocks import SidebarCallOutBlock
+from home.blocks import CallToActionBlock
 
 
 class HomePage(Page):
@@ -48,7 +49,13 @@ class HomePage(Page):
                                                     template='blocks/'
                                                              'team_carousel.'
                                                              'html')),
-                        ('soundcloud', SoundCloudBlock())],
+                        ('soundcloud', SoundCloudBlock()),
+                        ('section_carousel', ListBlock(ImageChooserBlock(),
+                                                       icon='image',
+                                                       template='blocks/'
+                                                                'section_'
+                                                                'carousel'
+                                                                '.html'))],
                        blank=True)
 
 HomePage.content_panels = [FieldPanel('title'),

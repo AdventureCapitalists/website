@@ -1,7 +1,7 @@
 {% load wagtailimages_tags %}
 
 <li>
-  {% image value.image min-1920x1080%}"
+  {% image value.image min-1920x1080 %}
   <div class="overlay-hero overlay-{{ value.color }}">
     {% if value.color == "dark" %}
     <div class="container caption-hero light-color">

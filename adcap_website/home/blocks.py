@@ -228,7 +228,8 @@ class ShortHeroBlock(StructBlock):
 
 class StatementBlock(StructBlock):
     title = CharBlock()
-    subtitles = ListBlock(CharBlock(), required=False)
+    subtitles = ListBlock(CharBlock(required=False),
+                          required=False)
     call_to_action = ListBlock(CallToActionBlock(),
                                required=False,
                                help_text='Large button to direct user to '
@@ -237,7 +238,8 @@ class StatementBlock(StructBlock):
     signup_form = BooleanBlock(required=False,
                                help_text='Check to display an email '
                                          'signup form in this frame.')
-    caveats = ListBlock(CharBlock(), required=False)
+    caveats = ListBlock(CharBlock(required=False),
+                        required=False)
 
     class Meta:
         icon = 'pilcrow'

@@ -1,0 +1,18 @@
+{% load wagtailimages_tags %}
+<section class="wow fadeIn pt pt-sm-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="owl-carousel image-slider o-flow-hidden">
+          {% for block in value %}
+          <div class="item">
+            {% image block fill-1920x1280-c100%}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<br />
