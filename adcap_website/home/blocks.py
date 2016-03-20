@@ -272,3 +272,15 @@ class TeamMemberBlock(StructBlock):
     class Meta:
         icon = 'user'
         template = 'blocks/team_member.html'
+
+
+class ContentCarouselFrame(StructBlock):
+    image = ImageChooserBlock()
+    image_location = ChoiceBlock([('left', 'Left'),
+                                  ('right', 'Right')],
+                                required=False)
+    description = PromoParagraphBlock()
+
+    class Meta:
+        icon = 'image'
+        template = 'blocks/content_carousel_frame.html'

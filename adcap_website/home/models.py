@@ -29,6 +29,7 @@ from home.blocks import TeamMemberBlock
 from home.blocks import SoundCloudBlock
 from home.blocks import SidebarCallOutBlock
 from home.blocks import CallToActionBlock
+from home.blocks import ContentCarouselFrame
 
 
 class HomePage(Page):
@@ -54,6 +55,12 @@ class HomePage(Page):
                                                        icon='image',
                                                        template='blocks/'
                                                                 'section_'
+                                                                'carousel'
+                                                                '.html')),
+                        ('content_carousel', ListBlock(ContentCarouselFrame(),
+                                                       icon='image',
+                                                       template='blocks/'
+                                                                'content_'
                                                                 'carousel'
                                                                 '.html'))],
                        blank=True)
