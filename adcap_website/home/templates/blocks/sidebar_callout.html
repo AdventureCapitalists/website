@@ -1,0 +1,15 @@
+<div class="contact-box-left mb-45">
+  <div class="contact-icon-left {{ value.icon }}" style=
+    "font-style: italic"></div>
+    <h6>{{ value.title }}</h6>
+    {{ value.body }}
+    {% if call_to_action %}
+    {{ value.call_to_action }}
+    {% endif %}
+    {% if value.links %}
+    {% for link in value.links %}
+    <a><i class="left {% if link.icon %}{{ link.icon }}{% endif %}"></i>{{ link.text }}</a> 
+    <br />
+    {% endfor %}
+    {% endif %}
+</div>

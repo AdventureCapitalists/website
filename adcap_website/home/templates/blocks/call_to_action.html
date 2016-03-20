@@ -1,7 +1,7 @@
 <a class="a-btn btn-{{ value.size }} btn-{{ value.color }}" 
   href="{{ value.uri }}">
   {% if value.button_icon %}
-  <i class="fa fa-{{ value.button_icon }}"></i>
+  <i class="{{ value.icon }}"></i>
   {% endif %}
   <b>{{ value.text }}</b>
 </a>

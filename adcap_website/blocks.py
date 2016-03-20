@@ -19,7 +19,6 @@ class LinkBlock(StructBlock):
 
 
 class CallToActionBlock(LinkBlock):
-    button_icon = CharBlock(required=False)
     color = ChoiceBlock([('black', 'Black'),
                          ('white', 'White')],
                         required=True)
@@ -146,11 +145,26 @@ class DefinitionListBlock(ContentBlock):
         template = 'blocks/definition_list.html'
 
 
-class ContentRow(StreamBlock):
+class SidebarCallOutBlock(StructBlock):
+    title = CharBlock()
+    body = RichTextBlock(required=False)
+    icon = CharBlock(required=False,
+                     help_text='Text block passed as the icon selected. '
+                               'Choose between Ionic Icons or FontAwesome.')
+    links = ListBlock(LinkBlock(),
+                      required=False)
+
+    class Meta:
+        icon = 'radio-empty'
+        template = 'blocks/sidebar_callout.html'
+
+
+class SectionBlock(StreamBlock):
     promo_paragraph = PromoParagraphBlock()
     skillbar = SkillbarBlock()
     icon_blurb = IconBlurbBlock()
     definition_list = DefinitionListBlock()
+    callout = SidebarCallOutBlock()
 
     class Meta:
         icon = 'folder'

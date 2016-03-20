@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags widget_tweaks %}
+
+{% block intro %}
+{% load wagtailimages_tags %}
+{% image page.hero fill-1920x1280-c90 as background %}
+<section class="inner-intro bg-img overlay-dark parallax parallax-background2"
+  style="background-image: url('{{ background.url }}');">
+  <div class="container">
+    <div class="row title">
+      <h2 class="h2 white">{{ page.title }}</h2>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<br />
+{% endblock %}
+
+{% block main %}
+<section class="ptb ptb-sm-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        {{ page.intro|richtext }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ptb ptb-sm-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 contact">
+      {{ page.sidebar }} 
+      </div>
+      <div class="col-md-6 col-md-offset-1">
+        <form class="contact-form" action="{% pageurl page %}" method="POST">
+           <!-- IF MAIL SENT SUCCESSFULLY -->
+           <h6 class="successContent"><i class="fa fa-check left" style=
+             "color: #5cb45d;"></i>Your message has been sent successfully.</h6>
+           <!-- END IF MAIL SENT SUCCESSFULLY -->
+
+           <!-- MAIL SENDING UNSUCCESSFULL -->
+           <h6 class="errorContent"><i class="fa fa-exclamation-circle left"
+             style="color: #e1534f;"></i>There was a problem validating the form
+             please check!</h6>
+           <!-- END MAIL SENDING UNSUCCESSFULL -->
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="form-field-wrapper">
+                {{ field.errors|add_class:"error" }}
+                {{ field|add_class:"input_sm form-full" }}
+            </div>
+          {% endfor %}
+          <div class="form-actions">
+            <input class="btn btn-md btn-black form-full" id="form-submit"
+              name="submit" type="submit" value="Pitch Us">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
