@@ -64,9 +64,25 @@ class HomePage(Page):
                                                                 'carousel'
                                                                 '.html'))],
                        blank=True)
+    search_image = models.ForeignKey('wagtailimages.Image',
+                                     null=True,
+                                     blank=True,
+                                     on_delete=models.SET_NULL,
+                                     related_name='+')
+
+    social_image = models.ForeignKey('wagtailimages.Image',
+                                     null=True,
+                                     blank=True,
+                                     on_delete=models.SET_NULL,
+                                     related_name='+')
 
 HomePage.content_panels = [FieldPanel('title'),
                            StreamFieldPanel('body')]
+
+HomePage.promote_panels = [MultiFieldPanel(Page.promote_panels,
+                                           "Common Configuration"),
+                           ImageChooserPanel('search_image'),
+                           ImageChooserPanel('social_image')]
 
 
 class FormField(AbstractFormField):

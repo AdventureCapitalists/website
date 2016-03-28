@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+
+{% block extra_css %}
+  <meta property="og:title" content="Loud Music for Startup People" />
+  <meta property="og:site_name" content="Adventure Capitalists" />
+  <meta property="og:description" content="Your startup game just got disrupted,
+  snacky. A pair of programmers lampoon hypergrowth software financing with
+  catchy punk rock tunes. Adventure Capitalists debut their new record MVP,
+  available wherever quality Internet connection exists." />
+  <meta property="og:image" content="http://adcap.biz/static/img/social/mvp_release-1200x1200.jpg" />
+{% endblock %}
+
+
+{% block intro %}
+<section class="inner-intro bg-img overlay-light parallax parallax-background2"
+  style="background-image: url('/static/img/full/hero-papers-1920x1280.jpg');">
+  <div class="container">
+    <div class="row title">
+      <h2 class="h2">Search</h2>
+      <div class="page-breadcrumb">
+      {{ search_query }}
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<br />
+{% endblock %}
+
+{% block main %}
+<section class="ptb ptb-sm-80">
+  <div class="container">
+    <div class="row">
+      {% if not search_results %}
+      <h4>No results were found matching your query: {{ search_query }}</h4>
+      {% elif search_results|length == 1 %}
+      <h4>Showing 1 result matching your query: {{ search_query }}</h4>
+      {% else %}
+      <h4>Showing {{ search_results|length }} results matching your query: {{ search_query }}</h4>
+      {% endif %}
+    </div>
+    {% for result in search_results %}
+    <div class="row">
+      <div class="search-results-image col-md-3">
+        {% if result.search_image %}
+        {% image result.search_image fill-200x110-c90 %}
+        {% elif result.social_image %}
+        {% image result.social_image fill-200x110-c90 %}
+        {% else %}
+        <img src="{% static "img/logos/logo_search_result-200x110.png" %}" />
+        {% endif %}
+      </div>
+      <div class="search-results-text col-md-9">
+          <h5>
+            <a href="{% pageurl result %}">{{ result }}</a>
+          </h5>
+          {% if result.search_description %}
+              <p>{{ result.search_description|safe }}</p>
+          {% endif %}
+          <a href="{% pageurl result %}">Read More</a>
+      </div>
+      <hr />
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
