@@ -1,9 +1,35 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block body_class %}template-404{% endblock %}
+{% block main %}
+<section class="inner-intro bg-img overlay-light parallax parallax-background2"
+  style="background-image: url('{% static "img/full/hero-champagne-1920x1080.jpg" %}')">
 
-{% block content %}
-    <h1>Page not found</h1>
-
-    <h2>Sorry, this page could not be found.</h2>
+  <div class="container">
+    <div class="row title">
+      
+      <h2 class="h2">404</h2>
+      
+      <div class="page-breadcrumb">
+        Where is the page you're looking for?
+      </div>
+      
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<br />
+<section class="pb pb-sm-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>It ain't here.</h1>
+        <p>Maybe this will help you find your way.</p>
+      </div>
+    </div>
+    <div class="row">
+       <iframe width="100%" height="800" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/220984266&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe> 
+    </div>
+  </div>
+</section>
 {% endblock %}
