@@ -15,6 +15,9 @@
   <meta property="og:description" content="Another seriously trenchant blog post from some smart mofos." />
   {% endif %}
   <meta property="og:image" content="{% absolute_url social_image.url %}" />
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url 'blog:latest_entries_feed' self.slug %}">
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url 'blog:latest_entries_feed_atom' self.slug %}">
 {% endblock %}
 
 

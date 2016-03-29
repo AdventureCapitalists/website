@@ -70,3 +70,13 @@ def latest_posts(context):
 @register.assignment_tag(takes_context=True)
 def blog_categories(context):
     return BlogCategory.objects.all()
+
+
+@register.assignment_tag(takes_context=True)
+def blog_tags(context):
+    posts = BlogPage.objects.order_by('-date')[:20]
+    tags = []
+    for post in posts:
+        for tag in post.tags.all():
+            tags.append(tag)
+    return tags

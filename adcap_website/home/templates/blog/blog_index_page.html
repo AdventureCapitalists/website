@@ -2,13 +2,13 @@
 {% load wagtailcore_tags wagtailimages_tags static bootstrap_pagination %}
 
 {% block extra_css %}
-  <meta property="og:title" content="Loud Music for Startup People" />
+  <meta property="og:title" content="{{ self.seo_title }}" />
   <meta property="og:site_name" content="Adventure Capitalists" />
-  <meta property="og:description" content="Your startup game just got disrupted,
-  snacky. A pair of programmers lampoon hypergrowth software financing with
-  catchy punk rock tunes. Adventure Capitalists debut their new record MVP,
-  available wherever quality Internet connection exists." />
+  <meta property="og:description" content="{{ self.search_description }}" />
   <meta property="og:image" content="http://adcap.biz/static/img/social/mvp_release-1200x1200.jpg" />
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url 'blog:latest_entries_feed' self.slug %}">
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url 'blog:latest_entries_feed_atom' self.slug %}">
 {% endblock %}
 
 {% block intro %}
@@ -16,10 +16,21 @@
   style="background-image: url('{% static 'img/full/hero-whiteboard-1920x1080.jpg' %}');">
   <div class="container">
     <div class="row title">
+      {% if category %}
+      <h2 class="h2">{{ category }}</h2>
+      {% if category.description %}
+      <div class="page-breadcrumb">
+      {{ category.description }}
+      </div>
+      {% endif %}
+      {% elif tag %}
+      <h2 class="h2">{{ tag }}</h2>
+      {% else %}
       <h2 class="h2">Blog</h2>
       <div class="page-breadcrumb">
       Trenchant Insight From a19s
       </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -35,7 +46,7 @@
       <div class="col-lg-9 col-md-9">
         {% if category %}
         <div class="row">
-          <h2 class="h2">{{ category }}</h2>
+          <h2 class="h2">Trenchant Insight On {{ category }}</h2>
         </div>
         {% elif tag %}
         <div class="row">

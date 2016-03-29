@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags adcap_tags %}
+{% load wagtailcore_tags wagtailimages_tags adcap_tags taggit_templatetags2_tags %}
 <div class="sidebar-widget">
   <h5 class="mb-15">Pipe this brilliance straight into your inbox.</h5>
   <div class="newsletter">
@@ -39,6 +39,21 @@
 </div>
 {% endif %}
 
+{% blog_tags as tags %}
+{% if tags %}
+<div class="sidebar-widget">
+  <h5>Tags</h5>
+  <hr>
+  <ul class="widget-tag">
+  {% for tag in tags %}
+  <li>
+    <a href="{% url 'blog:tag' tag.slug %}">{{ tag }}</a>
+  </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
 {% blog_categories as categories %}
 {% if categories %}
 <div class="sidebar-widget">
@@ -48,10 +63,21 @@
     {% for category in categories %}
     <li>
       <a href="{% url 'blog:category' category.slug %}">
-        {{ category.category.name}}
+        {{ category }}
       </a>
     </li>
     {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% if posts %}
+<div class="sidebar-widget">
+  <h5>Subscribe</h5>
+  <hr>
+  <ul>
+    <li><a href="{% url 'blog:latest_entries_feed' self.slug %}">RSS</a></li>
+    <li><a href="{% url 'blog:latest_entries_feed_atom' self.slug %}">Atom</a></li>
   </ul>
 </div>
 {% endif %}
