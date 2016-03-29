@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static bootstrap_pagination %}
+
+{% block extra_css %}
+  <meta property="og:title" content="Loud Music for Startup People" />
+  <meta property="og:site_name" content="Adventure Capitalists" />
+  <meta property="og:description" content="Your startup game just got disrupted,
+  snacky. A pair of programmers lampoon hypergrowth software financing with
+  catchy punk rock tunes. Adventure Capitalists debut their new record MVP,
+  available wherever quality Internet connection exists." />
+  <meta property="og:image" content="http://adcap.biz/static/img/social/mvp_release-1200x1200.jpg" />
+{% endblock %}
+
+{% block intro %}
+<section class="inner-intro bg-img overlay-light parallax parallax-background2"
+  style="background-image: url('{% static 'img/full/hero-whiteboard-1920x1080.jpg' %}');">
+  <div class="container">
+    <div class="row title">
+      <h2 class="h2">Blog</h2>
+      <div class="page-breadcrumb">
+      Trenchant Insight From a19s
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+{% endblock %}
+
+{% block main %}
+<section class="ptb ptb-sm-80">
+  <div class="container">
+    <div class="row">
+
+      <!-- Blog Content Start -->
+      <div class="col-lg-9 col-md-9">
+        {% if category %}
+        <div class="row">
+          <h2 class="h2">{{ category }}</h2>
+        </div>
+        {% elif tag %}
+        <div class="row">
+          <h2 class="h2">Posts tagged with "{{ tag }}"</h2>
+        </div>
+        {% endif %}
+
+        <div class="row">
+          <div class="col-md-12 blog-post-hr">
+            {% for blog in blogs %}
+              {% include 'blog/blog_post.html' with include_context='index_page' %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if blogs.num_pages > 1 %}
+        <div class="row">
+          <div class="col-md-12">
+            {% bootstrap_paginate blogs %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <!-- Blog Content End -->
+
+      <div class="col-lg-3 col-md-3 mt-sm-60">
+        {% include 'blog/sidebar.html' %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock%}

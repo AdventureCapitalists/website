@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags adcap_tags %}
+
+{% block extra_css %}
+  {% image self.header_image fill-1200x1200-c90 as social_image %}
+  {% if self.seo_title %}
+  <meta property="og:title" content="{{ self.seo_title }}" />
+  {% else %}
+  <meta property="og:title" content="{{ self.title }}" />
+  {% endif %}
+  <meta property="og:site_name" content="{{ SITE_NAME }}" />
+  {% if self.search_description %}
+  <meta property="og:description" content="{{ self.search_description }}" />
+  {% else %}
+  <meta property="og:description" content="Another seriously trenchant blog post from some smart mofos." />
+  {% endif %}
+  <meta property="og:image" content="{% absolute_url social_image.url %}" />
+{% endblock %}
+
+
+{% block intro %} 
+{% image self.header_image fill-1920x1280-c90 as background %}
+<section class="inner-intro bg-img overlay-light parallax parallax-background2"
+  style="background-image: url('{{ background.url }}');">
+  <div class="container">
+    <div class="row title">
+      <h2 class="h2">{{ self.title }}</h2>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+{% endblock %}
+
+
+{% block main %}
+<section class="ptb ptb-sm-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-9">
+        <div class="col-md-12 blog-post-hr">
+          {% include 'blog/blog_post.html' with blog=self %}
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 mt-sm-60">
+        {% include 'blog/sidebar.html' %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+{% if settings.home.ExternalServicesSettings.disqus %}
+<script type="text/javascript">
+var disqus_config = function () {
+{% pageurl self as page_url %}
+this.page.url = '{% absolute_url page_url %}'; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '{{ self.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//{{ settings.home.ExternalServicesSettings.disqus }}.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+{% endif %}
+{% endblock %}

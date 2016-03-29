@@ -5,3 +5,4 @@ djangorestframework==3.3.3
 django-widget-tweaksi==1.4.1
 wagtail-blog==1.6.5
 django-bootstrap-pagination==1.6.1
+django-taggit-templatetags2==1.5.1

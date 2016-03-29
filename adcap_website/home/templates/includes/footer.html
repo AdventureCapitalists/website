@@ -24,10 +24,22 @@
       <!-- Social -->
       <div class="col-md-3 col-md-offset-2 col-sm-4 col-xs-12">
         <ul class="social">
-          <li><a target="_blank" href="https://www.twitter.com/adcapbiz"><i class="fa fa-twitter"></i></a></li>
-          <li><a target="_blank" href="https://instagram.com/adcapbiz"><i class="fa fa-instagram"></i></a></li>
-          <li><a target="_blank" href="https://www.facebook.com/adcapbiz"><i class="fa fa-facebook"></i></a></li>
-          <li><a target="_blank" href="https://www.github.com/AdventureCapitalists"><i class="fa fa-github"></i></a></li>
+          {% if settings.home.SocialMediaSettings.soundcloud %}
+          <li><a target="_blank" href="https://soundcloud.com/{{ settings.home.SocialMediaSettings.soundcloud }}"><i class="fa fa-soundcloud"></i></a></li>
+          {% endif %}
+          {% if settings.home.SocialMediaSettings.twitter %}
+          <li><a target="_blank"
+            href="https://www.twitter.com/{{ settings.home.SocialMediaSettings.twitter }}"><i class="fa fa-twitter"></i></a></li>
+          {% endif %}
+          {% if settings.home.SocialMediaSettings.instagram %}
+          <li><a target="_blank" href="https://instagram.com/{{ settings.home.SocialMediaSettings.instagram }}"><i class="fa fa-instagram"></i></a></li>
+          {% endif %}
+          {% if settings.home.SocialMediaSettings.facebook %}
+          <li><a target="_blank" href="https://www.facebook.com/{{ settings.home.SocialMediaSettings.facebook }}"><i class="fa fa-facebook"></i></a></li>
+          {% endif %}
+          {% if settings.home.SocialMediaSettings.github %}
+          <li><a target="_blank" href="https://www.github.com/{{ settings.home.SocialMediaSettings.github }}"><i class="fa fa-github"></i></a></li>
+          {% endif %}
         </ul>
       </div>
        <!-- End Social -->

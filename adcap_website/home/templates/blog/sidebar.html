@@ -1,0 +1,57 @@
+{% load wagtailcore_tags wagtailimages_tags adcap_tags %}
+<div class="sidebar-widget">
+  <h5 class="mb-15">Pipe this brilliance straight into your inbox.</h5>
+  <div class="newsletter">
+    <form class="subscribe-form" id="blog-email" name=
+          "blog-email">
+      <input class="newsletter-input input-md mb-0 black" id=
+             "blog-email-input" type="email" placeholder="Lend Us Your Email">
+      <label for="blog-email-input"></label>
+      <button class="newsletter-btn btn btn-xs" type="submit" value="">
+        <i class="fa fa-angle-right mr-0"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+{% latest_posts as posts %}
+{% if posts %}
+<div class="sidebar-widget">
+  <h5>Recent Insights</h5>
+  <hr>
+  <ul class="widget-post recent-posts">
+    {% for post in posts %}
+    <li>
+      {% if post.header_image %}
+      <a class="widget-post-media" href="{% pageurl post %}">
+        {% image post.header_image fill-70x80-c90 %}
+      </a>
+      {% endif %}
+      <div class="widget-post-info">
+        <h6><a href="{% pageurl post %}">{{ post.title }}</a></h6>
+        <div class="post-meta">
+          <span>{{ post.date|date:"d M Y" }}</span>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% blog_categories as categories %}
+{% if categories %}
+<div class="sidebar-widget">
+  <h5>Categories</h5>
+  <hr>
+  <ul>
+    {% for category in categories %}
+    <li>
+      <a href="{% url 'blog:category' category.slug %}">
+        {{ category.category.name}}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

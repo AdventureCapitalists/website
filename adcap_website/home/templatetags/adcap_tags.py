@@ -1,5 +1,8 @@
 from django import template
 
+from blog.models import BlogPage
+from blog.models import BlogCategory
+
 register = template.Library()
 
 
@@ -8,6 +11,11 @@ def get_site_root(context):
     # NB this returns a core.Page, not the implementation-specific model used
     # so object-comparison to self will return false as objects would differ
     return context['request'].site.root_page
+
+
+@register.assignment_tag(takes_context=True)
+def get_site_name(context):
+    return context['request'].site.site_name
 
 
 def has_menu_children(page):
@@ -46,3 +54,19 @@ def top_menu_children(context, parent):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
+
+@register.simple_tag(takes_context=True)
+def absolute_url(context, path):
+    request = context['request']
+    return request.build_absolute_uri(path)
+
+
+@register.assignment_tag(takes_context=True)
+def latest_posts(context):
+    return BlogPage.objects.order_by('-date')[:5]
+
+
+@register.assignment_tag(takes_context=True)
+def blog_categories(context):
+    return BlogCategory.objects.all()

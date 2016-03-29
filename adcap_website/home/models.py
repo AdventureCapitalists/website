@@ -31,6 +31,9 @@ from home.blocks import SidebarCallOutBlock
 from home.blocks import CallToActionBlock
 from home.blocks import ContentCarouselFrame
 
+from wagtail.contrib.settings.models import BaseSetting
+from wagtail.contrib.settings.models import register_setting
+
 
 class HomePage(Page):
     body = StreamField([('carousel', ListBlock(CarouselFrame(),
@@ -113,3 +116,56 @@ class FormPage(AbstractEmailForm):
             FieldPanel('subject', classname="full"),
         ], "Email")
     ]
+
+
+@register_setting(icon='user')
+class SocialMediaSettings(BaseSetting):
+    facebook = models.CharField(max_length=255,
+                                null=True,
+                                blank=True,
+                               help_text="Your Facebook handle")
+    instagram = models.CharField(max_length=255,
+                                 null=True,
+                                 blank=True,
+                                 help_text="Your Instagram handle")
+    twitter = models.CharField(max_length=255,
+                               null=True,
+                               blank=True,
+                               help_text="Your Twitter handle")
+    github = models.CharField(max_length=255,
+                              null=True,
+                              blank=True,
+                              help_text="Your GitHub username")
+    soundcloud = models.CharField(max_length=255,
+                                  null=True,
+                                  blank=True,
+                                  help_text="Your SoundCloud username")
+
+
+@register_setting(icon='site')
+class ExternalServicesSettings(BaseSetting):
+    google_analytics = models.CharField(max_length=255,
+                                        null=True,
+                                        blank=True,
+                                        help_text="Your Google Analytics UA")
+    google_tag_manager = models.CharField(max_length=255,
+                                          null=True,
+                                          blank=True,
+                                          help_text="Your Google Tag Manager "
+                                                    "GTM ID")
+    optimizely = models.CharField(max_length=255,
+                                  null=True,
+                                  blank=True,
+                                  help_text="Your Optimizely project ID")
+    disqus = models.CharField(max_length=255,
+                              null=True,
+                              blank=True,
+                              help_text="Your Disqus community name")
+    mailchimp_u = models.CharField(max_length=255,
+                                   null=True,
+                                   blank=True,
+                                   help_text="Your MailChimp user ID")
+    mailchimp_id = models.CharField(max_length=255,
+                                    null=True,
+                                    blank=True,
+                                    help_text="Your MailChimp List ID")
