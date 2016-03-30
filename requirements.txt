@@ -4,4 +4,4 @@ django-debug-toolbar==1.4
 djangorestframework==3.3.3
 django-widget-tweaksi==1.4.1
 django-bootstrap-pagination==1.6.1
--e https://github.com/RobSpectre/wagtail_blog.git
+-e git+https://github.com/RobSpectre/wagtail_blog.git
