@@ -20,3 +20,4 @@ adcap_website/db.*
 /mezzanine/.pydevproject
 node_modules
 **/media/**
+local.py
