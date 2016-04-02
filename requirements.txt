@@ -4,4 +4,5 @@ django-debug-toolbar==1.4
 djangorestframework==3.3.3
 django-widget-tweaks==1.4.1
 django-bootstrap-pagination==1.6.1
+django-dbbackup==2.4.1
 -e git://github.com/RobSpectre/wagtail_blog.git#egg=elasticutils

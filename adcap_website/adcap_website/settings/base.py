@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'compressor',
     'taggit',
+    'dbbackup',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -144,4 +145,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "adcap_website"
+WAGTAIL_SITE_NAME = "Adventure Capitalists"
+
+DBBACKUP_STORAGE = 'dbbackup.storage.filesystem_storage'
+DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
