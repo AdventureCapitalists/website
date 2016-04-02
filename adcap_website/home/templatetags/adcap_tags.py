@@ -74,7 +74,7 @@ def blog_categories(context):
 
 @register.assignment_tag(takes_context=True)
 def blog_tags(context):
-    posts = BlogPage.objects.order_by('-date')[:20]
+    posts = BlogPage.objects.order_by('-date')[:10]
     tags = []
     for post in posts:
         for tag in post.tags.all():

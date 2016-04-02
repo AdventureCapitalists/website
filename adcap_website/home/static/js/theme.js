@@ -28,6 +28,7 @@
 
     function openSite() {
         fullScreenSlider();
+        flexHero();
         header();
         scroll();
         winResize();
@@ -198,7 +199,6 @@ function fullScreenSlider() {
 
 
 };
-
 
 
 // ---------------------------------------------------------------------------------------------------------------------------->
@@ -697,3 +697,16 @@ function jqueryUi() {
 
 
 
+// ---------------------------------------------------------------------------------------------------------------------------->
+// FLEX HERO FUNCTIONS ||-----------
+// ---------------------------------------------------------------------------------------------------------------------------->
+
+function flexHero() {
+  if ($('.flex-hero').length > 0) {
+    BackgroundCheck.init({
+      images: '.flex-hero',
+      targets: '.full-intro, .flex-hero',
+    });
+    BackgroundCheck.refresh();
+  }
+}

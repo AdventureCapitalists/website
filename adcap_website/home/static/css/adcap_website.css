@@ -1,0 +1,9 @@
+.flex-hero.background--dark .h2 {
+  color: #fff;
+}
+
+.flex-hero.background--complex .h2 {
+  color: #fff;
+  background-color: #383838;
+  padding: 1em 0 1em 0;
+}

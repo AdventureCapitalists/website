@@ -4,7 +4,7 @@
   {% if include_context == "index_page" %}
   <div class="post-media">
     <a href="{% pageurl blog %}">
-      {% image blog.header_image fill-678x300-c90 %}
+      {% image blog.header_image fill-850x300-c90 %}
     </a>
   </div>
   {% endif %}
@@ -24,12 +24,17 @@
     <span><a href="{% url 'blog:category' category.category.slug %}">{{ category.category.name }}</a>{% if not forloop.last %}, {% endif %}</span>
     {% endfor %}
     {% endif %}
+    {% if include_context == "index_page" %}
     {{ blog.date|timesince }} ago
+    {% else %}
+    {{ blog.date|date:"d M Y" }}
+    {% endif %}
   </div>
 
+  <hr style="margin-bottom: 5px" >
   <div class="post-entry">
     {% if include_context == "index_page" %}
-    {{ blog.body|richtext|truncatewords_html:100 }}
+    {{ blog.body|richtext|truncatewords_html:150 }}
     {% else %}
     {{ blog.body|richtext }}
     {% endif %}
