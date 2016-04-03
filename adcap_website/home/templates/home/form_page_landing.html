@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags widget_tweaks %}
+
+{% block intro %}
+{% load wagtailimages_tags %}
+{% image page.hero fill-1920x1280-c90 as background %}
+<section class="inner-intro bg-img overlay-dark parallax parallax-background2"
+  style="background-image: url('{{ background.url }}');">
+  <div class="container">
+    <div class="row title">
+      <h2 class="h2 white">{{ page.title }}</h2>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<br />
+{% endblock %}
+
+{% block main %}
+<section class="ptb ptb-sm-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        {{ page.thank_you_text|richtext }}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
