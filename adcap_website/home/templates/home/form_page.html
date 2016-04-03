@@ -49,7 +49,7 @@
           {% for field in form %}
             <div class="form-field-wrapper">
                 {{ field.errors|add_class:"error" }}
-                {{ field|add_class:"input_sm form-full" }}
+                {% render_field field class="input_sm form-full" placeholder=field.label %}
             </div>
           {% endfor %}
           <div class="form-actions">
