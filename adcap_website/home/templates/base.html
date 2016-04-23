@@ -55,6 +55,10 @@
     ga('create', '{{ settings.home.ExternalServicesSettings.google_analytics }}', 'auto');
     ga('send', 'pageview');
   </script>
+  {% elif settings.home.ExternalServicesSettings.optimizely and settings.home.ExternalServicesSettings.google_tag_manager %}
+  <script src="//cdn.optimizely.com/js/{{ settings.home.ExternalServicesSettings.optimizely }}.js"></script>
+  {% elif settings.home.ExternalServicesSettings.optimizely %}
+  <script src="//cdn.optimizely.com/js/{{ settings.home.ExternalServicesSettings.optimizely }}.js"></script>
   {% endif %}
 
   <!--[if lt IE 9]>
@@ -73,6 +77,9 @@
 
 <body class="full-intro">
   {% if settings.home.ExternalServicesSettings.google_tag_manager %}
+  <script type="text/javascript">
+    dataLayer = [];
+  </script>
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{ settings.home.ExternalServicesSettings.google_tag_manager }}"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -155,9 +162,27 @@
 
     function logSubscribe(response) {
       if (response.result == "success") {
+        {% if settings.home.ExternalServicesSettings.google_tag_manager %}
+        dataLayer.push({
+          'event': 'email_subscribe',
+          'category': 'Email',
+          'action': 'Subscribe',
+          'label': 'Success'
+        });
+        {% else %}
         ga('send', 'event', 'Email', 'Subscribe', 'Success', {page: window.location.pathname});
+        {% endif %}
       } else {
+        {% if settings.home.ExternalServicesSettings.google_tag_manager %}
+        dataLayer.push({
+          'event': 'email_subscribe',
+          'category': 'Email',
+          'action': 'Error',
+          'label': response.result 
+        });
+        {% else %}
         ga('send', 'event', 'Email', 'Error', response.result, {page: window.location.pathname});
+        {% endif %}
       }
     }
   </script>
