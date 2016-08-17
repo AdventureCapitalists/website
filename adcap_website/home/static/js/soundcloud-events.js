@@ -14,6 +14,9 @@ function handlePlayEvent(event) {
       window.soundcloud_widget.getCurrentSound(function(sound) {
         window.current_song = sound.title;
         ga('send', 'event', 'SoundCloud', 'Play', sound.title, {page: window.location.pathname});
+
+        window['optimizely'] = window['optimizely'] || [];
+        window.optimizely.push(["trackEvent", "songPlay"]);
       });
     }, 1);
   }
@@ -28,36 +31,48 @@ function handlePlayProgressEvent(event) {
 function handleFinishEvent(event) {
   return function(event) {
     ga('send', 'event', 'SoundCloud', 'Finish', window.current_song, {page: window.location.pathname}); 
+    window['optimizely'] = window['optimizely'] || [];
+    window.optimizely.push(["trackEvent", "songFinish"]);
   }
 }
 
 function handlePauseEvent(event) {
   return function(event) {
     ga('send', 'event', 'SoundCloud', 'Pause', window.current_song, {'dimension1': window.current_progress_bucket}); 
+    window['optimizely'] = window['optimizely'] || [];
+    window.optimizely.push(["trackEvent", "songPause"]);
   }
 }
 
 function handleSeekEvent(event) {
   return function(event) {
     ga('send', 'event', 'SoundCloud', 'Seek', window.current_song, {'dimension1': window.current_progress_bucket}); 
+    window['optimizely'] = window['optimizely'] || [];
+    window.optimizely.push(["trackEvent", "songSeek"]);
   }
 }
 
 function handleDownloadEvent(event) {
   return function(event) {
     ga('send', 'event', 'SoundCloud', 'Download', window.current_song, {'dimension1': window.current_progress_bucket}); 
+    window['optimizely'] = window['optimizely'] || [];
+    window.optimizely.push(["trackEvent", "songDownload"]);
   }
 }
 
 function handleBuyEvent(event) {
   return function(event) {
     ga('send', 'event', 'SoundCloud', 'Buy', window.current_song, {'dimension1': window.current_progress_bucket}); 
+    window['optimizely'] = window['optimizely'] || [];
+    window.optimizely.push(["trackEvent", "songBuy"]);
   }
 }
 
 function handleShareEvent(event) {
   return function(event) {
     ga('send', 'event', 'SoundCloud', 'Share', window.current_song, {'dimension1': window.current_progress_bucket}); 
+    window['optimizely'] = window['optimizely'] || [];
+    window.optimizely.push(["trackEvent", "songShare"]);
   }
 }
 
