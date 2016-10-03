@@ -64,7 +64,7 @@ def absolute_url(context, path):
 
 @register.assignment_tag(takes_context=True)
 def latest_posts(context):
-    return BlogPage.objects.order_by('-date')[:5]
+    return BlogPage.objects.live().order_by('-date')[:5]
 
 
 @register.assignment_tag(takes_context=True)
